@@ -6,11 +6,11 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:11:45 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/25 23:47:02 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/05/26 15:05:01 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	LIBFT_H
+#ifndef LIBFT_H
 #define LIBFT_H
 #include <stddef.h>
 
@@ -41,5 +41,6 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	**ft_split(char const *s, char c);
 
 #endif
