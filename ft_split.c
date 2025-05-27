@@ -6,15 +6,13 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 15:04:26 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/26 15:17:08 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/05/27 17:37:51 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-//ft_count_words
-//ft to make a malloc(wordlen) and put there a word
-
+#include <stdio.h>
 size_t	ft_countwords(char const *s, char c)
 {
 	size_t	flag;
@@ -24,94 +22,117 @@ size_t	ft_countwords(char const *s, char c)
 	flag = 0;
 	i = 0;
 	wordcount = 0;
-
 	while (s[i] != '\0')
 	{
-		if (s[i] != c)
+		if (s[i] != c && flag == 0)
 		{
-			if (flag == 0)
-			{
-				wordcount++;
-				flag = 1;
-			}
+			wordcount++;
+			flag = 1;
 		}
-		i++;
-		else
+		else if (s[i] == c) 
 			flag = 0;
 		i++;
 	}
 	return (wordcount);
 }
 
-char	*ft_newword(char const *s, char c)
+char	*ft_newword(char const *s, size_t *i, char c)
 {
-	size_t	flag;
-	size_t	i;
+	char			*newword;
 	unsigned int	wordstart;
-	size_t	wordlen;
+	size_t			wordlen;
 
-	flag = 0;
-	while (s[i] != '\0')
-	{	
-		if (s[i] != c)
-			if (flag == 0)
-			{
-				flag = 1;
-				wordstart = i;
-			}
-		wordlen++;
-		i++;
-		if (s[i] == c || s[i] == '\0')
-		{	
-			flag = 0;
-			newword = ft_substr(s, wordstart, wordlen);
-			return (newword, wordlen);
-		}
+	wordlen = 0;
+	while (s[*i] == c && s[*i] != '\0')
+	{
+		(*i)++;
 	}
+	wordstart = *i;
+	while (s[*i] != c && s[*i] != '\0')
+	{	
+		(*i)++;
+		wordlen++;
+	}
+	newword = ft_substr(s, wordstart, wordlen);
+	return (newword);
+}
+
+void	ft_freearrarr(size_t *j, char **arrarr)
+{
+	while (*j >= 0)
+	{
+		free (arrarr[*j]);
+		(*j)--;
+	}
+	free (arrarr);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**arrarr;
 	char	*newword;
-	char	*arrnewword;
 	size_t	wordcount;
-	size_t	wordlen;
-	size_t	flag;
 	size_t	i;
 	size_t	j;
 	
-
 	j = 0;
 	i = 0;
+	//printf("in 1 ft_split 1\n");
 	if (!s)
 		return (NULL);
-
-	wordcount = ft_countwords(s);
-
-	arrarr = ft_calloc(sizeof(char *), wordcount + 1);
+	//printf("in 2 ft_split 2\n");
+	wordcount = ft_countwords(s, c);
+	arrarr = ft_calloc(wordcount + 1, sizeof(char *)); //empty arr of arr with +one for 0
+	printf("in 3 ft_split arrarr: %p\n", arrarr);
 	if (!arrarr)
 		return (NULL);
-
-	while (j < wordcount)
+	//printf("in 4 ft_split 4\n");
+	while (j++ < wordcount)
 	{
-		while (s[i] == c)
-			i++;
-		newword, wordlen = ft_newword(s + i, c);
+		newword = ft_newword(s, &i, c);
+		printf("in 5 while newword: %s\n", newword);
 		if (!newword)
-		// free all done arrs and free arrarr
-			while (j > = 0)
-				free (arrarr[j]);
-				j--;
-			free (arrarr);
+		{
+			printf("in NULL newword, gonna free\n");
+			ft_freearrarr(&j, arrarr);
 			return (NULL);
-			
-		arrarr[j] = arrnewword;
-		i = i + wordlen;
-		j++;
+		}
+		arrarr[j] = newword;
+		printf("in 6 got newword: %s\n", newword);
+		//j++;
 	}
-	arrarr[j] = 0;
+	return (arrarr);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char    **ft_split(char const *s, char c);
+
+int main(void)
+{
+    char *str = "  hello  world  42  ";
+    char sep = ' ';
+    char **result = ft_split(str, sep);
+	printf("Str:%s\n",str);
+
+    if (!result)
+    {
+        printf("Split failed!\n");
+        return 1;
+    }
+	printf("main GOT result!\n");
+	printf("RESULT: %s", result[3]);
 
 
-	retern (arrarr);
+    int i = 0;
+    while (result[i])
+    {
+        printf("Word %d: '%s'\n", i, result[i]);
+        free(result[i]);
+        i++;
+    }
+    free(result);
+
+    return 0;
 }
