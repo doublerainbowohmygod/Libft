@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoneil <aoneil@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:35:05 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/19 18:42:49 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/05/28 17:57:26 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	isalnum(int c)
+
+int	ft_isalnum(int c)
 {
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
- || (c >= '0' && c <= '9'));
+	unsigned char	uc;
+
+	uc = (unsigned char)c;
+	return ((uc >= 'A' && uc <= 'Z') 
+		|| (uc >= 'a' && uc <= 'z') 
+		|| (uc >= '0' && uc <= '9'));
 }

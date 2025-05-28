@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:42:31 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/26 00:46:33 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/05/28 17:46:01 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	srclen;
 	size_t	startsizet;
 
-	startsizet = (size_t)start;
 	if (!s)
 		return (NULL);
+	startsizet = (size_t)start;
 	srclen = ft_strlen(s);
 	if (startsizet >= srclen)
 	{
