@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 15:04:26 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/28 18:08:43 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/05/30 14:32:19 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char *ft_substr(char const *s, unsigned int start, size_t len);
-void *ft_calloc(size_t count, size_t size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	*ft_calloc(size_t count, size_t size);
 
 size_t	ft_countwords(char const *s, char c)
 {
 	size_t	flag;
 	size_t	i;
 	size_t	wordcount;
-	
+
 	flag = 0;
 	i = 0;
 	wordcount = 0;
@@ -51,7 +51,7 @@ char	*ft_newword(char const *s, size_t *i, char c)
 		(*i)++;
 	wordstart = *i;
 	while (s[*i] != c && s[*i] != '\0')
-	{	
+	{
 		(*i)++;
 		wordlen++;
 	}
@@ -73,7 +73,7 @@ static char	**fill_arrarr(char const *s, char **arr, size_t wordcount, char c)
 {
 	size_t	i;
 	size_t	j;
-	
+
 	i = 0;
 	j = 0;
 	while (j < wordcount)
@@ -125,6 +125,9 @@ int main(void)
     }
 	printf("main GOT result!\n");
 	printf("RESULT: %s", result[0]);
+	printf("RESULT: %s", result[1]);
+	printf("RESULT: %s", result[2]);
+	printf("RESULT: %s", result[3]);
 
 
     int i = 0;

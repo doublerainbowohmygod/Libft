@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 22:54:06 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/26 01:05:29 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/05/30 22:11:53 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!newstr)
 		return (NULL);
 	newstr[0] = '\0';
-	ft_strlcat(newstr, s1, textlen);
-	ft_strlcat(newstr, s2, textlen);
+	ft_strlcat(newstr, s1, textlen + 1);
+	ft_strlcat(newstr, s2, textlen + 1);
 	return (newstr);
 }
 
