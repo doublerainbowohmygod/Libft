@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 22:31:29 by aoneil            #+#    #+#             */
-/*   Updated: 2025/06/01 19:33:29 by aoneil           ###   ########.fr       */
+/*   Created: 2025/06/01 19:43:13 by aoneil            #+#    #+#             */
+/*   Updated: 2025/06/01 19:46:04 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-	write (fd, &c, 1);
+	if (!s)
+		return ;
+	while (*s)
+	{
+		write (fd, s, 1);
+		s++;
+	}
+	write (fd, "\n", 1);
 }
 
 /*
@@ -32,10 +39,7 @@ int	main (void)
 		write(1, "Error: could not open file\n", 27);
 		return 1;
 	}
-	while (*ptr)
-	{
-		ft_putchar_fd (*ptr++, fd);
-	}
+	ft_putendl_fd (ptr, fd);
 	close (fd);
 	return 0;
 }

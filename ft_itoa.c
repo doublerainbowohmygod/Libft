@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:32:46 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/30 21:19:46 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/06/01 19:07:54 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdint.h>
 #include "libft.h"
 
-static size_t	ft_nlen(int n);
+size_t	ft_nlen(int n);
 char	*ft_putnbr2s(char *s, long lnb, size_t *i);
 
-static size_t	ft_nlen(int n)
+size_t	ft_nlen(int n)
 {
-	int	tmp;
+	int		tmp;
 	size_t	nlen;
 
 	tmp = n;
@@ -56,8 +56,8 @@ char	*ft_putnbr2s(char *s, long lnb, size_t *i)
 char	*ft_itoa(int n)
 {
 	char	*s;
-	size_t		len;
-	size_t		i;
+	size_t	len;
+	size_t	i;
 
 	i = 0;
 	if (n == -2147483648)
@@ -69,10 +69,9 @@ char	*ft_itoa(int n)
 		return (s);
 	}
 	len = ft_nlen(n);
-	
 	s = malloc(len + 1);
-		if (!s)
-			return (NULL);
+	if (!s)
+		return (NULL);
 	ft_putnbr2s(s, n, &i);
 	return (s);
 }
