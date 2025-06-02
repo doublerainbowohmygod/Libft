@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/01 22:28:02 by aoneil            #+#    #+#             */
-/*   Updated: 2025/06/01 23:27:18 by aoneil           ###   ########.fr       */
+/*   Created: 2025/06/02 11:04:04 by aoneil            #+#    #+#             */
+/*   Updated: 2025/06/02 11:58:58 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_nextnode(t_list *lst)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	t_list	*ptr;
+
+	ptr = lst->next;
+    return (ptr);
 }
 
-/*
+size_t	ft_lstsize(t_list *lst)
+{
+    size_t  i;
+
+    i = 0;
+    while (lst->next != NULL)
+    {
+		lst = ft_nextnode(lst->next);
+        i++;
+    }
+	return (i);
+}
+
 #include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 int main()
 {
+	printf ("no nodes \n");
     int x = 42;
     t_list *node1 = ft_lstnew(&x);
     if (!node1)
@@ -33,8 +46,6 @@ int main()
         printf("Malloc error!\n");
         return (1);
     }
-	printf("  content1: %d\n", *(int*)node1->content);
-    printf("  next1: %p \n", (void*)node1->next);
 
 	char s[] = "hi";
     t_list *node2 = ft_lstnew(s);
@@ -43,22 +54,26 @@ int main()
         printf("Malloc error!\n");
         return (1);
     }
-	printf("  content2: %s\n", (char*)node2->content);
-    printf("  next2: %p \n", (void*)node2->next);
 
-	ft_lstadd_front (&node1, node2);
-
-    printf("New node changed:\n");
+	int y = 55;
+    t_list *node3 = ft_lstnew(&y);
+    if (!node1)
+    {
+        printf("Malloc error!\n");
+        return (1);
+    }
+	printf ("nodes \n");
 	
-    printf("  content1: %s\n", (char*)node1->content);
-    printf("  next1: %d \n", *(int*)(void*)node1->next);
-
-	printf("  content2: %d\n", *(int*)node2->content);
-    printf("  next2: %p \n", (void*)node2->next);
-
+	ft_lstadd_front(&node3, node2);
+	ft_lstadd_front(&node3, node1);
     free(node1->next);
     free(node1);
+	free(node2->next);
+    free(node2);
+	free(node3->next);
+    free(node3);
+
+	printf ("%ld", ft_lstsize(node3));
 
     return 0;
 }
-*/
