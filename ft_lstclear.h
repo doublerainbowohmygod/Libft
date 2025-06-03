@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 14:29:51 by aoneil            #+#    #+#             */
-/*   Updated: 2025/06/03 20:29:08 by aoneil           ###   ########.fr       */
+/*   Created: 2025/06/03 20:19:48 by aoneil            #+#    #+#             */
+/*   Updated: 2025/06/03 20:49:19 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	t_list	*tmp;
 
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	if (d == s || n == 0)
-		return (dest);
-	if (d < s || d >= s + n)
+	if (!lst || !del)
+		return ;
+	while (*lst)
 	{
-		while (n--)
-			*d++ = *s++;
+		tmp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = tmp;
 	}
-	else
-	{
-		d += n;
-		s += n;
-		while (n--)
-			*--d = *--s;
-	}
-	return (dest);
+	*lst = NULL;
 }
+

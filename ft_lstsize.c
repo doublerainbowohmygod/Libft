@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 11:04:04 by aoneil            #+#    #+#             */
-/*   Updated: 2025/06/02 21:13:36 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/06/03 19:10:27 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_lstsize(t_list *lst)
 {
-    if (!lst)
-		return ;
 	size_t	i;
 
+	if (!lst)
+		return (0);
 	i = 0;
 	while (lst != NULL)
 	{
