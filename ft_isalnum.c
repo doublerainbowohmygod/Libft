@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:35:05 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/28 17:57:26 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/12/06 01:53:07 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_isalnum(int c)
 	unsigned char	uc;
 
 	uc = (unsigned char)c;
-	return ((uc >= 'A' && uc <= 'Z') 
-		|| (uc >= 'a' && uc <= 'z') 
+	return ((uc >= 'A' && uc <= 'Z')
+		|| (uc >= 'a' && uc <= 'z')
 		|| (uc >= '0' && uc <= '9'));
 }

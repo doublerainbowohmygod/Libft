@@ -6,13 +6,13 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:11:45 by aoneil            #+#    #+#             */
-/*   Updated: 2025/10/27 15:01:44 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/12/06 01:52:39 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
-#include <stddef.h>
+# define LIBFT_H
+# include <stddef.h>
 
 typedef struct s_list
 {

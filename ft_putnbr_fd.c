@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 19:46:37 by aoneil            #+#    #+#             */
-/*   Updated: 2025/06/01 20:54:16 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/12/06 01:52:20 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	if (n < 0)
 	{
-		write(fd, "-", 1); 
-		n = -n; 
+		write(fd, "-", 1);
+		n = -n;
 	}
 	if (n > 9)
 		ft_putnbr_fd(n / 10, fd);

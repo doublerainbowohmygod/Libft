@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 21:30:41 by aoneil            #+#    #+#             */
-/*   Updated: 2025/06/02 19:45:10 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/12/06 02:02:59 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
-
-typedef struct t_list
-{
-	void			*content;
-	struct t_list	*next;
-}	t_list;
+#include "libft.h"
 
 t_list	*ft_lstnew(void *content)
 {

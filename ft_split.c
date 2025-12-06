@@ -6,7 +6,7 @@
 /*   By: aoneil <aoneil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 15:04:26 by aoneil            #+#    #+#             */
-/*   Updated: 2025/05/30 14:32:19 by aoneil           ###   ########.fr       */
+/*   Updated: 2025/12/06 01:50:56 by aoneil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_countwords(char const *s, char c)
 			wordcount++;
 			flag = 1;
 		}
-		else if (s[i] == c) 
+		else if (s[i] == c)
 			flag = 0;
 		i++;
 	}
